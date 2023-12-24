@@ -1,9 +1,4 @@
-import {
-  ComponentFixture,
-  TestBed,
-  fakeAsync,
-  tick,
-} from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
 import { ListarPensamentoComponent } from './listar-pensamento.component';
 import { PensamentoService } from '../pensamento.service';
@@ -11,19 +6,24 @@ import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AppModule } from 'src/app/app.module';
 import { Pensamento } from '../pensamento';
+import { By } from '@angular/platform-browser';
+import { Router, RouterLinkWithHref } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ListarPensamentoComponent', () => {
   let component: ListarPensamentoComponent;
   let fixture: ComponentFixture<ListarPensamentoComponent>;
   let service: PensamentoService;
+  let router: Router;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, AppModule],
+      imports: [HttpClientTestingModule, AppModule, RouterTestingModule],
     }).compileComponents();
 
     service = TestBed.inject(PensamentoService);
     fixture = TestBed.createComponent(ListarPensamentoComponent);
     component = fixture.componentInstance;
+    router = TestBed.inject(Router);
   });
 
   it('should create', () => {
@@ -63,6 +63,14 @@ describe('ListarPensamentoComponent', () => {
     expect(spy).toHaveBeenCalled();
     expect(pensamentosList.length).toBeGreaterThan(0);
   });
+  it(`should call navigateByUrl with '/criarPensamento' when button is pressed `, () => {
+    const routerSpy = spyOn(router, 'navigateByUrl');
+    const link = fixture.nativeElement.querySelector('.botao');
+    link.click();
+    const routerSpyArgs = routerSpy.calls.first().args[0];
+    expect(routerSpyArgs.toString()).toBe('/criarPensamento');
+  });
+
   it(`(D) ListarPensamentosComponent.listarPensamentos should render 'Ainda não há pensamentos cadastrados!' when it returns an empty array`, () => {
     const response: Pensamento[] = [];
     const spy = spyOn(service, 'listar').and.returnValue(of(response));
