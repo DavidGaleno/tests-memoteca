@@ -2,7 +2,7 @@
   <header class="header">
     <h2>Adicione um <br>pensamento novo:</h2>
   </header>
-  <form>
+  <form (ngSubmit)="criarPensamento()">
     <label for="pensamento">Pensamento</label>
     <input
       type="textarea"
@@ -90,8 +90,8 @@
       </div>
     </div>
     <div class="acoes">
-      <button (click)="criarPensamento()" class="botao">Salvar</button>
-      <button (click)="cancelar()" class="botao">Cancelar</button>
+      <button type="submit" class="botao salvar">Salvar</button>
+      <button (click)="cancelar()" class="botao cancelar">Cancelar</button>
     </div>
   </form>
 </section>
