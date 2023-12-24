@@ -1,4 +1,10 @@
-import { Directive, Input, ElementRef, OnChanges } from '@angular/core';
+import {
+  Directive,
+  Input,
+  ElementRef,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 
 @Directive({
   selector: '[highlight]',
@@ -11,7 +17,7 @@ export class HighlightDirective implements OnChanges {
     this.setColor();
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     this.setColor();
   }
   setColor() {
