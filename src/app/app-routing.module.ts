@@ -4,34 +4,35 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListarPensamentoComponent } from './componentes/pensamentos/listar-pensamento/listar-pensamento.component';
 import { ExcluirPensamentoComponent } from './componentes/pensamentos/excluir-pensamento/excluir-pensamento.component';
 import { EditarPensamentoComponent } from './componentes/pensamentos/editar-pensamento/editar-pensamento.component';
+import { TodoFormComponent } from './04-forms/todo-form.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'listarPensamento',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'criarPensamento',
-    component: CriarPensamentoComponent
+    component: CriarPensamentoComponent,
   },
   {
     path: 'listarPensamento',
-    component: ListarPensamentoComponent
+    component: ListarPensamentoComponent,
   },
   {
     path: 'pensamentos/excluirPensamento/:id',
-    component: ExcluirPensamentoComponent
+    component: ExcluirPensamentoComponent,
   },
   {
     path: 'pensamentos/editarPensamento/:id',
-    component: EditarPensamentoComponent
-  }
-
+    component: EditarPensamentoComponent,
+  },
+  { path: 'todoform', component: TodoFormComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

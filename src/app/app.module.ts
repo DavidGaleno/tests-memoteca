@@ -14,6 +14,7 @@ import { ExcluirPensamentoComponent } from './componentes/pensamentos/excluir-pe
 import { EditarPensamentoComponent } from './componentes/pensamentos/editar-pensamento/editar-pensamento.component';
 import { ReservePipePipe } from './pipes/reserve-pipe.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
+import { ToDoFormModule } from './04-forms/todo-form.module';
 
 @NgModule({
   declarations: [
@@ -26,15 +27,16 @@ import { HighlightDirective } from './directives/highlight.directive';
     ExcluirPensamentoComponent,
     EditarPensamentoComponent,
     ReservePipePipe,
-    HighlightDirective
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToDoFormModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
