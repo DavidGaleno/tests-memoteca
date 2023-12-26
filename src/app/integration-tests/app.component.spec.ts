@@ -35,4 +35,9 @@ describe('AppComponent', () => {
     );
     expect(index).toBeGreaterThan(-1);
   });
+  it('should test numbers', () => {
+    let a = {};
+    let b = {};
+    expect(a).toEqual(b);
+  });
 });
